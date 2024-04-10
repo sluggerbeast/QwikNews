@@ -1,11 +1,11 @@
 import React from 'react'
 
-function Nav() {
+function Nav({onTaskBarToggle}) {
     let showTaskBar = true
   return (
     <div
-        style={{ display: showTaskBar ? "block" : "none" }}
-        className="text-center p-3 bg-slate-100  fixed w-full mb-2 shadow"
+        style={{ display: onTaskBarToggle ? "block" : "none" }}
+        className="text-center p-3 bg-slate-100  fixed w-full mb-2 shadow z-30"
       >
         <ul className="flex justify-between ">
           <li className="text-blue-500">Options</li>

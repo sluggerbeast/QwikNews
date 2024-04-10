@@ -25,7 +25,7 @@ function ShortCards({ imgUrl,aUrl, heading, summary, taskToggle }) {
       
       <div
         onClick={handleTaskBarToggle}
-        className="flex flex-col justify-center h-[100vh] w-fit sm:w-[400px] bg-slate-100 rounded rounded-[10px] mb-1 overflow-hidden font-roboto"
+        className="flex flex-col justify-center h-[90vh] w-fit sm:w-[400px] bg-slate-100 rounded rounded-[10px] mb-1 overflow-hidden font-roboto"
       >
         <div className="max-h-[50vh] h-fit flex-auto">
           <img src={imgUrl} className="w-fit" />
