@@ -58,7 +58,7 @@ function App() {
     <>
     {isSideBarOpen?<SideBar />:null}
       <Nav onTaskBarToggle={showTaskBar} onSideBarToggle={handleSideBarToggle} />
-      <Swipeable onSideBarToggle={handleSideBarToggle} />
+      {/* <Swipeable onSideBarToggle={handleSideBarToggle} /> */}
       {/* <div>
         <h1 className="text-center p-2 bg-slate-600 text-white  w-full mb-2">
           Quick News
