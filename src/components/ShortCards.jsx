@@ -25,7 +25,7 @@ function ShortCards({ imgUrl,aUrl, heading, summary, taskToggle }) {
       
       <div
         onClick={handleTaskBarToggle}
-        className="flex flex-col justify-center h-[90vh] w-fit sm:w-[400px] bg-slate-100 rounded rounded-[10px] mb-1 overflow-hidden font-roboto"
+        className="flex flex-col sticky top-0 justify-center h-[95vh] w-fit sm:w-[400px] bg-slate-100 rounded rounded-[10px] mb-1 overflow-hidden font-roboto"
       >
         <div className="max-h-[50vh] h-fit flex-auto">
           <img src={imgUrl} className="w-fit" />
@@ -45,7 +45,7 @@ function ShortCards({ imgUrl,aUrl, heading, summary, taskToggle }) {
             }}
           >
             <div className="w-full h-fit backdrop-blur-xl p-4">
-              <h3>Rahul declared total assests worth 20 crores</h3>
+              <h3>Click here for more details</h3>
               <p className="text-[0.8rem]">Tap to know more</p>
             </div>
           </div>
