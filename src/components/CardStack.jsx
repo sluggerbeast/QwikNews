@@ -1,29 +1,9 @@
-import React, { useRef, useState } from 'react';
-// Import Swiper React components
-import { Swiper, SwiperSlide } from 'swiper/react';
+import React from 'react'
 
-// Import Swiper styles
-import 'swiper/css';
-import 'swiper/css/effect-cards';
-
-// import './styles.css';
-
-// import required modules
-import { EffectCards,Mousewheel, Pagination  } from 'swiper/modules';
-
-export default function App({children}) {
+function CardStack() {
   return (
-    <>
-      <Swiper
-        direction={'vertical'}
-        pagination={{
-          clickable: true,
-        }}
-        modules={[Pagination]}
-        className="mySwiper"
-      >
-       {children}
-      </Swiper>
-    </>
-  );
+    <div>CardStack</div>
+  )
 }
+
+export default CardStack

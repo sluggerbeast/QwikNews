@@ -28,7 +28,7 @@ function ShortCards({ imgUrl,aUrl, heading, summary, taskToggle }) {
         className="flex flex-col  justify-center h-[95vh] w-fit sm:w-[400px] bg-slate-100 rounded rounded-[10px] mb-1 overflow-hidden font-roboto"
       >
         <div className="max-h-[50vh] h-fit flex-auto">
-          <img src={imgUrl} className="w-fit" loading='lazy'/>
+          <img src={imgUrl} className="w-fit" alt="something went wrong" loading='lazy'/>
         </div>
         <div className="m-4 flex-[70%]">
           <h2 className=" mt-2 font-[500] text-xl">{heading}</h2>
@@ -42,7 +42,8 @@ function ShortCards({ imgUrl,aUrl, heading, summary, taskToggle }) {
           <div
             style={{
               backgroundImage: `url(${imageURL})`,
-              loading:"lazy"
+              loading:"lazy",
+              
             }}
           >
             <div className="w-full h-fit backdrop-blur-xl p-4">

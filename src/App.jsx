@@ -9,7 +9,8 @@ import { newsList } from "./data";
 import Nav from "./components/Nav";
 import CardStack from "./components/CardStack";
 import SkeletonFrame from "./components/SkeletonStack";
-import { Swiper, SwiperSlide } from 'swiper/react';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHippo } from "@fortawesome/free-solid-svg-icons";
 import SideBar from "./pages/SideBar";
 import Swipeable from "./components/Swipeable";
 const env = "prod"
@@ -20,13 +21,20 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [isSideBarOpen, setIsSidebarOpen] = useState(false)
   const [NewsData, setNewsData] = useState([]); // State to store fetched data
+  const [currentFeedName, setCurrentFeedName] = useState("Your feed");
   function handleShowTaskBar() {
     setShowTaskBar((prev) => {
       return !prev;
     });
   }
   function handleSideBarToggle(state){
-    setIsSidebarOpen(state)
+    if(state==null || state==undefined){
+      setIsSidebarOpen(prev=>!prev)
+    } 
+    else{
+      setIsSidebarOpen(state)
+    }
+    
     }
 
   async function DataHandle(list) {
@@ -37,6 +45,7 @@ function App() {
           articleUrl: item.url,
           heading: item.title,
           summary: item.description,
+          category:"mixed"
         };
       });
       setNewsData(formatedList);
@@ -56,9 +65,9 @@ function App() {
 
   return (
     <>
-    {isSideBarOpen?<SideBar />:null}
-      <Nav onTaskBarToggle={showTaskBar} onSideBarToggle={handleSideBarToggle} />
-      {/* <Swipeable onSideBarToggle={handleSideBarToggle} /> */}
+    <SideBar onSideBarToggle={isSideBarOpen} />
+      <Nav onTaskBarToggle={showTaskBar} isSideBarOpen={isSideBarOpen} onSideBarToggle={handleSideBarToggle}  currentFeedName={currentFeedName}/>
+       <Swipeable onSideBarToggle={handleSideBarToggle} /> 
       {/* <div>
         <h1 className="text-center p-2 bg-slate-600 text-white  w-full mb-2">
           Quick News

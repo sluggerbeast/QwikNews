@@ -11,7 +11,7 @@ function Frame({url}) {
         </ul>
     </div>
     <div>
-    <iframe src={url}></iframe>
+    
     </div>
     </>
   )
