@@ -9,11 +9,14 @@ function Swipeable({onSideBarToggle}) {
         },
         onSwipedLeft:()=>{
             console.log("inside right");
-            onSideBarToggle(true)
+            onSideBarToggle(false) 
+            // Swiping right show set the state of sideBar false it means
+            // the side bar is opened and it will close
+            // opposite for right swipe
         },
         onSwipedRight: () => {
             console.log("inside left");
-            onSideBarToggle(false)
+            onSideBarToggle(true)
         },
         preventDefaultTouchmoveEvent: true
       });
