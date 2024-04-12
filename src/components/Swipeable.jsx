@@ -4,9 +4,7 @@ import { useSwipeable } from 'react-swipeable'
 function Swipeable({onSideBarToggle}) {
 
     const { ref: documentRef } = useSwipeable({
-        onSwiped: ({ dir, event }) => {
-          console.log("swiped"+dir)
-        },
+        
         onSwipedLeft:()=>{
             console.log("inside right");
             onSideBarToggle(false) 
