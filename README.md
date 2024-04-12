@@ -6,4 +6,14 @@ This app is work in progress
 
 [Demo](https://qwiknews.netlify.app/)
 
-Main feature of this app will be its news recommendation engine.
+# Features
+
+- [x] News Feed
+- [x] Filter
+- [ ] Bookmark
+- [x] Responsive
+- [ ] Dark Mode
+- [ ] Pagination
+- [ ] Filtering
+- [ ] Sorting
+- [ ] Sharing
