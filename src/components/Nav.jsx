@@ -42,7 +42,7 @@ function Nav({
         <li className="text-blue-500 " onClick={handleTaskBarToggle}>
           <FontAwesomeIcon icon={faHippo} className="text-[30px]" />
         </li>
-        <li className="text-[1.1rem] font-normal">
+        <li className="text-[1.1rem] font-normal self-center">
           {isSideBarOpen ? "QwikNews" : currentFeedName}
         </li>
         <li>
