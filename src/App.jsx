@@ -14,7 +14,7 @@ import SideBar from "./pages/SideBar";
 import Swipeable from "./components/Swipeable";
 // import {categoryList} from "./data.js"
 
-const env = "dev"
+const env = "prod"
 const debug = true;
 const EvnUrl = env=="prod"?"https://qwiknewsbackend.onrender.com/":"http://127.0.0.1:8000/"
 const inshortUrl = env=="prod"?"https://qwiknewsbackend.onrender.com/inshorts?count=150":"http://127.0.0.1:8000/inshorts?count=150"
@@ -113,25 +113,25 @@ function App() {
   }
   async function handleNewsFeed(){
     if(newsPreference.length>0){
-      // const prefArr = newsPreference.map((item)=>{
-      //   return item.keywords;
-      // }).flat()
-      // console.log(prefArr)
-      // console.log(NewsData.map((item)=>item.category))
+      const prefArr = newsPreference.map((item)=>{
+        return item.keywords;
+      }).flat()
+      console.log(prefArr)
+      console.log(NewsData.map((item)=>item.category))
 
-      // let CatList = NewsData.filter((item)=>{
+      let CatList = NewsData.filter((item)=>{
           
-      //     if(item.category[0] && prefArr.includes(item.category[0].toLowerCase())){
+          if(item.category[0] && prefArr.includes(item.category[0].toLowerCase())){
            
-      //       // console.log(item.category[0])
-      //       return true;
-      //     }else{
-      //       return false;
-      //     }
-      // })
-      // console.log(CatList)
-      // setNewsFeed(CatList);
-      setNewsFeed(NewsData);
+            // console.log(item.category[0])
+            return true;
+          }else{
+            return false;
+          }
+      })
+      console.log(CatList)
+      setNewsFeed(CatList);
+      // setNewsFeed(NewsData);
       
     }else {
       setNewsFeed(NewsData);
