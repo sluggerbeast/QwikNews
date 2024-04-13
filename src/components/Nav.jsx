@@ -40,7 +40,7 @@ function Nav({
     >
       <ul className="flex justify-between sm:justify-center sm:gap-[4rem]">
         <li className="text-blue-500 " onClick={handleTaskBarToggle}>
-          <FontAwesomeIcon icon={faHippo} className="fa-xl" />
+          <FontAwesomeIcon icon={faHippo} className="text-[30px]" />
         </li>
         <li className="text-[1.1rem] font-normal">
           {isSideBarOpen ? "QwikNews" : currentFeedName}
@@ -49,13 +49,13 @@ function Nav({
           {isOntop ? (
             <FontAwesomeIcon
               icon={faRefresh}
-              className="text-blue-500 fa-xl"
+              className="text-blue-500 text-[30px]"
               onClick={handleRefresh}
             />
           ) : (
             <FontAwesomeIcon
               icon={faArrowUp}
-              className="text-blue-500 fa-xl"
+              className="text-blue-500 text-[30px]"
               onClick={handleScrollToTop}
             />
           )}
