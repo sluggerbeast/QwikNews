@@ -15,7 +15,7 @@ import Swipeable from "./components/Swipeable";
 const env = "prod"
 const debug = true;
 const EvnUrl = env=="prod"?"https://qwiknewsbackend.onrender.com/":"http://127.0.0.1:8000/"
-const inshortUrl = env=="prod"?"https://qwiknewsbackend.onrender.com/inshorts":"http://127.0.0.1:8000/inshorts"
+const inshortUrl = env=="prod"?"https://qwiknewsbackend.onrender.com/inshorts?count=200":"http://127.0.0.1:8000/inshorts?count=200"
 const categoryList = [
   { id: 1, category: "politics" },
 
@@ -191,6 +191,7 @@ function App() {
           />
           // </SwiperSlide>
         ))}  
+        {NewsData.length>0&& newsFeed.length<1 && <div className="mt-10"> No news from your preference yet </div>}
 
         
           

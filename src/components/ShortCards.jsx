@@ -9,6 +9,7 @@ function ShortCards({ imgUrl, aUrl, heading, summary, taskToggle }) {
       "https://dummyjson.com/image/400x200/008080/ffffff?text=Please+reload!";
     console.log(imageURL);
   }
+  const ig = "https://dummyjson.com/image/400x200/008080/ffffff?text=Please+reload!"
 
   function handleTaskBarToggle() {
     taskToggle();
@@ -27,12 +28,12 @@ function ShortCards({ imgUrl, aUrl, heading, summary, taskToggle }) {
         <div className="max-h-[50vh] h-fit flex-auto overflow-hidden">
           {/* <img src={imgUrl} className="w-[100%]  max-h-[50vh] " alt="something went wrong" loading='lazy'/> */}
           <LazyLoadImage
-            className="ml-[-50%] translate-x-[50%]"
+            className="ml-[-50%] translate-x-[50%]  w-[100%]  max-h-[50vh] "
             src={imgUrl}
             width={600}
             height={400}
-            PlaceholderSrc={imageURL}
-            alt="Image Alt"
+            
+            alt="Something went wrong please reload page."
           />
         </div>
         <div className="m-4 flex-[70%]">
@@ -50,13 +51,13 @@ function ShortCards({ imgUrl, aUrl, heading, summary, taskToggle }) {
         <div class=" text-white bg-black  shadow-2xl flex-none ">
           <div
             style={{
-              backgroundImage: `url(${imageURL})`,
+              backgroundImage: `url(${ig})`,
               loading: "lazy",
             }}
           >
             <div className="w-full h-fit backdrop-blur-xl p-4">
-              <h3>Click here for more details</h3>
-              <p className="text-[0.8rem]">Tap to know more</p>
+            <a href={aUrl} target="_blank"><h3>Click here for more details</h3>
+              <p className="text-[0.8rem]">Tap to know more</p></a>
             </div>
           </div>
         </div>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -65,6 +65,7 @@ function SideBar({ onSideBarToggle ,onNewsPref,newPref }) {
               key={item.id}
               onNewsPref={onNewsPref}
               filterText={item.category}
+              newPref={newPref}
             />
           ))}
         </div>
@@ -83,8 +84,14 @@ function SideBar({ onSideBarToggle ,onNewsPref,newPref }) {
   );
 }
 
-function FilterBtn({ id, filterText, onNewsPref }) {
+function FilterBtn({ id, filterText, onNewsPref,newPref }) {
   const [isSelected, setIsSelectd] = useState(false);
+  useEffect(()=>{
+      const val = newPref.filter((item)=>item.id==id)
+      if(val.length>0){
+        setIsSelectd(true)
+      }
+  },[newPref])
   function handleFilterClick() {
     isSelected ? onNewsPref(id, "remove") : onNewsPref(id, "add");
     setIsSelectd((prev) => !prev);
