@@ -16,7 +16,7 @@ const env = "prod"
 const debug = true;
 const EvnUrl = env=="prod"?"https://qwiknewsbackend.onrender.com/":"http://127.0.0.1:8000/"
 const inshortUrl = env=="prod"?"https://qwiknewsbackend.onrender.com/inshorts?count=200":"http://127.0.0.1:8000/inshorts?count=200"
-const categoryList = [
+export const categoryList = [
   { id: 1, category: "politics" },
 
   { id: 2, category: "sports" },
@@ -31,6 +31,8 @@ const categoryList = [
   { id: 10, category: "travel" },
   { id: 11, category: "science" },
   { id: 12, category: "fashion" },
+  { id:13,category:"international"},
+  
 ];
 
 function App() {
@@ -191,7 +193,7 @@ function App() {
           />
           // </SwiperSlide>
         ))}  
-        {NewsData.length>0&& newsFeed.length<1 && <div className="mt-10"> No news from your preference yet </div>}
+        {NewsData.length>0 && newsFeed.length<1 && <div className="mt-10 text-center"> No latest news of your preference yet <button onClick={setIsSidebarOpen} className="text-blue-500">click here to change preference</button> </div>}
 
         
           

@@ -7,22 +7,7 @@ import {
   faArrowUp,
   faFilter,
 } from "@fortawesome/free-solid-svg-icons";
-const categoryList = [
-  { id: 1, category: "politics" },
-
-  { id: 2, category: "sports" },
-  { id: 3, category: "health" },
-  { id: 4, category: "technology" },
-  { id: 5, category: "entertainment" },
-  { id: 6, category: "business" },
-  
-  { id: 8, category: "education" },
-  { id: 9, category: "startup" },
-  { id: 7, category: "misc" },
-  { id: 10, category: "travel" },
-  { id: 11, category: "science" },
-  { id: 12, category: "fashion" },
-];
+  import {categoryList} from "../App.jsx"
 function SideBar({ onSideBarToggle ,onNewsPref,newPref }) {
   const [fitlerCat, setFilterCat] = useState([]);
 
