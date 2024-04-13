@@ -27,8 +27,8 @@ function ShortCards({ imgUrl,aUrl, heading, summary, taskToggle }) {
         onClick={handleTaskBarToggle}
         className="flex flex-col  justify-center h-[95vh] w-fit sm:w-[400px] bg-slate-100 rounded rounded-[10px] mb-1 overflow-hidden font-roboto"
       >
-        <div className="max-h-[50vh] h-fit flex-auto ">
-          <img src={imgUrl} className="w-fit  max-h-[50vh] " alt="something went wrong" loading='lazy'/>
+        <div className="max-h-[50vh] h-fit flex-auto overflow-hidden">
+          <img src={imgUrl} className="w-[100%]  max-h-[50vh] " alt="something went wrong" loading='lazy'/>
         </div>
         <div className="m-4 flex-[70%]">
           <h2 className=" mt-2 font-[500] text-xl">{heading}</h2>
