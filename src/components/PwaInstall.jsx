@@ -25,9 +25,9 @@ function PwaInstall() {
     return () => window.removeEventListener("beforeinstallprompt", handler);
   });
 
-//   if (window.matchMedia("(display-mode: standalone)").matches) {
-//     return;
-//   } else {
+  if (window.matchMedia("(display-mode: standalone)").matches) {
+    return;
+  } else {
     return (
       <button
         id="installInstructions"
@@ -45,6 +45,6 @@ function PwaInstall() {
       </button>
     );
   }
-// }
+}
 
 export default PwaInstall;
