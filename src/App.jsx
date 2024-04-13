@@ -13,6 +13,7 @@ import { faHippo } from "@fortawesome/free-solid-svg-icons";
 import SideBar from "./pages/SideBar";
 import Swipeable from "./components/Swipeable";
 const env = "prod"
+const debug = true;
 const EvnUrl = env=="prod"?"https://qwiknewsbackend.onrender.com/":"http://127.0.0.1:8000/"
 const inshortUrl = env=="prod"?"https://qwiknewsbackend.onrender.com/inshorts":"http://127.0.0.1:8000/inshorts"
 const categoryList = [
@@ -132,6 +133,21 @@ function App() {
     handleNewsFeed();
 
   },[NewsData,newsPreference])
+
+  useEffect(()=>{
+    const pref = JSON.parse(localStorage.getItem("newsPref"))
+    if(pref!==null){
+      setNewsPreference(pref.pref)
+      console.log(pref.pref)
+    }
+     
+
+  },[])
+  useEffect(()=>{
+      localStorage.setItem('newsPref',JSON.stringify({"pref":newsPreference}))
+
+
+  },[newsPreference])
 
   useEffect(() => {
     setNewsData([])
