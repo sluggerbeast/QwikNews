@@ -193,7 +193,7 @@ function App() {
           />
           // </SwiperSlide>
         ))}  
-        {NewsData.length>0 && newsFeed.length<1 && <div className="mt-10 text-center"> No latest news of your preference yet <button onClick={setIsSidebarOpen} className="text-blue-500">click here to change preference</button> </div>}
+        {NewsData.length>0 && newsFeed.length<1 && <div className="text-center mt-[50vh] translate-y-[-50%]"> No latest news of your preference yet. <br /> <button onClick={setIsSidebarOpen} className="text-blue-500">click here to change preference</button> </div>}
 
         
           
