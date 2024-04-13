@@ -8,6 +8,7 @@ import {
   faFilter,
 } from "@fortawesome/free-solid-svg-icons";
   import {categoryList} from "../App.jsx"
+import PwaInstall from "../components/PwaInstall.jsx";
 
   const NewsChannels = [
     {id:1,channel:"All News"},
@@ -62,7 +63,9 @@ function SideBar({ onSideBarToggle ,onNewsPref,newPref }) {
           ))}
         </div>
         <p className=" text-center italic text-xs">&#8592; Swipe left to close this menu</p>
+        <PwaInstall />
         <p className="text-center m-1">News channels &#128269; (coming soon)</p>
+        
         <div className="flex flex-row flex-wrap justify-center  p-3">
           {NewsChannels.map((item) => (
             <div className="">
