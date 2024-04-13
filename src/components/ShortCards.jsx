@@ -28,10 +28,9 @@ function ShortCards({ imgUrl, aUrl, heading, summary, taskToggle }) {
         <div className="max-h-[50vh] h-fit flex-auto overflow-hidden">
           {/* <img src={imgUrl} className="w-[100%]  max-h-[50vh] " alt="something went wrong" loading='lazy'/> */}
           <LazyLoadImage
-            className="ml-[-50%] translate-x-[50%]  w-[100%]  max-h-[50vh] "
+            className=" w-[100%]  max-h-[50vh] "
             src={imgUrl}
-            width={600}
-            height={400}
+            
             
             alt="Something went wrong please reload page."
           />
