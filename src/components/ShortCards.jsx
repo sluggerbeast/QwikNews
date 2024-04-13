@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
-function ShortCards({ imgUrl, aUrl, heading, summary, taskToggle }) {
+
+
+
+function ShortCards({ imgUrl, aUrl, heading, summary, taskToggle,date }) {
   const [openIFrame, setOpenIFrame] = useState(false);
   let imageURL = imgUrl;
   if (imgUrl === null || imgUrl == "") {
@@ -40,10 +43,11 @@ function ShortCards({ imgUrl, aUrl, heading, summary, taskToggle }) {
           <p className="font-[300] mt-2 text-slate-900 text-[1.1rem]">
             {summary}
           </p>
-          <p className="mt-2" onClick={handleOpenArticle}>
+          <p className="mt-2 w-full" onClick={handleOpenArticle}>
             <a href={aUrl} target="_blank">
               read more...
             </a>
+            <span className="text-xs ml-[45%]">{date}</span>
           </p>
         </div>
 

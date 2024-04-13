@@ -8,6 +8,13 @@ import {
   faFilter,
 } from "@fortawesome/free-solid-svg-icons";
   import {categoryList} from "../App.jsx"
+
+  const NewsChannels = [
+    {id:1,channel:"All News"},
+    {id:2,channel:"Indian express"},
+    {id:3,channel:"Inshorts"},
+  ]
+  
 function SideBar({ onSideBarToggle ,onNewsPref,newPref }) {
   const [fitlerCat, setFilterCat] = useState([]);
 
@@ -54,15 +61,17 @@ function SideBar({ onSideBarToggle ,onNewsPref,newPref }) {
             />
           ))}
         </div>
-        <p className="text-center m-1">View news based on category &#128269;</p>
+        <p className=" text-center italic text-xs">&#8592; Swipe left to close this menu</p>
+        <p className="text-center m-1">News channels &#128269; (coming soon)</p>
         <div className="flex flex-row flex-wrap justify-center  p-3">
-          {categoryList.map((item) => (
+          {NewsChannels.map((item) => (
             <div className="">
               <button className="bg-blue-200 border border-blue-50 hover:bg-blue-300 w-[150px] text-black h-[4em] rounded-lg p-2 m-2">
-                {item.category}
+                {item.channel}
               </button>
             </div>
           ))}
+          
         </div>
       </div>
     </>

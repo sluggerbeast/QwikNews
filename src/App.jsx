@@ -12,27 +12,31 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHippo } from "@fortawesome/free-solid-svg-icons";
 import SideBar from "./pages/SideBar";
 import Swipeable from "./components/Swipeable";
-const env = "prod"
+// import {categoryList} from "./data.js"
+
+const env = "dev"
 const debug = true;
 const EvnUrl = env=="prod"?"https://qwiknewsbackend.onrender.com/":"http://127.0.0.1:8000/"
-const inshortUrl = env=="prod"?"https://qwiknewsbackend.onrender.com/inshorts?count=200":"http://127.0.0.1:8000/inshorts?count=200"
+const inshortUrl = env=="prod"?"https://qwiknewsbackend.onrender.com/inshorts?count=150":"http://127.0.0.1:8000/inshorts?count=150"
 export const categoryList = [
-  { id: 1, category: "politics" },
+  { id: 1, category: "politics", keywords: ["politics", "bjp", "congress", "voting", "election",
+"cities","national","political-pulse","india"] },
 
-  { id: 2, category: "sports" },
-  { id: 3, category: "health" },
-  { id: 4, category: "technology" },
-  { id: 5, category: "entertainment" },
-  { id: 6, category: "business" },
-  
-  { id: 8, category: "education" },
-  { id: 9, category: "startup" },
-  { id: 7, category: "misc" },
-  { id: 10, category: "travel" },
-  { id: 11, category: "science" },
-  { id: 12, category: "fashion" },
-  { id:13,category:"international"},
-  
+  { id: 2, category: "sports", keywords: ["sports", "ipl", "footbal",] },
+  { id: 3, category: "health", keywords: ["health", "lifestyle",] },
+  { id: 4, category: "technology", keywords: ["technology",] },
+  { id: 5, category: "entertainment", keywords: ["entertainment", "celebrity", "actor", "movies"] },
+  { id: 6, category: "business", keywords: ["business", "investment", "funding"] },
+
+  { id: 8, category: "education", keywords: ["education", "college", "school"] },
+  { id: 9, category: "startup", keywords: ["startup", "investor"] },
+  { id: 7, category: "miscellaneous", keywords: ["miscellaneous",
+"explained",] },
+  { id: 10, category: "travel", keywords: ["travel"] },
+  { id: 11, category: "science", keywords: ["science"] },
+  { id: 12, category: "fashion", keywords: ["fashion", "outfit"] },
+  { id: 13, category: "international", keywords: ["international", "world"] },
+
 ];
 
 function App() {
@@ -76,14 +80,15 @@ function App() {
 
   async function DataHandle(list) {
     if (list) {
-      const formatedList = list.map((item) => {
+      const formatedList = list.filter((item)=>(item.description!="")).map((item) => {
         return {
           id: item.id,
           imgUrl: item.urlToImage,
           articleUrl: item.url,
           heading: item.title,
           summary: item.description,
-          category:["mixed"]
+          category:[item.category],
+          date: item.date
         };
       });
       setNewsData(formatedList);
@@ -99,23 +104,26 @@ function App() {
           articleUrl: item.url,
           heading: item.title,
           summary: item.content,
-          category:item.categoryList  
+          category:item.categoryList,
+          date: item.date
         };
       });
-      setNewsData(prev=>[...formatedList]);
+      setNewsData(prev=>[...prev,...formatedList]);
     }
   }
   async function handleNewsFeed(){
     if(newsPreference.length>0){
       const prefArr = newsPreference.map((item)=>{
-        return item.category;
-      })
+        return item.keywords;
+      }).flat()
       console.log(prefArr)
       console.log(NewsData.map((item)=>item.category))
 
       let CatList = NewsData.filter((item)=>{
           
-          if(prefArr.includes(item.category[0])){
+          if(item.category[0] && prefArr.includes(item.category[0].toLowerCase())){
+           
+            // console.log(item.category[0])
             return true;
           }else{
             return false;
@@ -140,7 +148,7 @@ function App() {
     const pref = JSON.parse(localStorage.getItem("newsPref"))
     if(pref!==null){
       setNewsPreference(pref.pref)
-      console.log(pref.pref)
+      // console.log(pref.pref)
     }
      
 
@@ -154,8 +162,8 @@ function App() {
   useEffect(() => {
     setNewsData([])
     const fetchData = async () => {
-      // const responseHT = await axios.get(EvnUrl);
-      // await DataHandle(responseHT.data);
+      const responseHT = await axios.get(EvnUrl);
+      await DataHandle(responseHT.data);
       const responseIS = await axios.get(inshortUrl
       );
       await DataHandleInshorts(responseIS.data)
@@ -189,6 +197,7 @@ function App() {
             aUrl={item.articleUrl}
             heading={item.heading}
             summary={item.summary}
+            date={item.date}
             taskToggle={handleShowTaskBar}
           />
           // </SwiperSlide>
