@@ -16,7 +16,8 @@ function Swipeable({onSideBarToggle}) {
             console.log("inside left");
             onSideBarToggle(true)
         },
-        preventDefaultTouchmoveEvent: true
+        preventDefaultTouchmoveEvent: true,
+        swipeDuration: 250,
       });
       useEffect(() => {
         documentRef(document);
