@@ -32,7 +32,7 @@ function PwaInstall() {
       <button
         id="installInstructions"
         onClick={onInstallClick}
-        className="bg-[#f4f4f4] mt-1 sm:hidden border ml-[50%] translate-x-[-50%] border-red-400 rounded p-1 w-full h-fit flex flex-row justify-center gap-2 "
+        className="bg-[#f4f4f4] mt-1 sm:hidden border  border-red-400 rounded p-1 w-full h-fit flex flex-row justify-center gap-2 "
       >
         <h3>
           <span className="italic font-bold">Install QwikNews</span>
