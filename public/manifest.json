@@ -2,7 +2,7 @@
   "name": "QwikNews",
   "short_name": "QwikNews",
   "theme_color": "#2ec6fe",
-  "background_color": "#8936ff",
+  "background_color": "#d92a24",
   "display": "standalone",
   "orientation": "portrait",
   "scope": "/",

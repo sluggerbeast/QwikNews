@@ -108,7 +108,7 @@ function App() {
           date: item.date
         };
       });
-      setNewsData(prev=>[...prev,...formatedList]);
+      setNewsData(prev=>[...formatedList,...prev]);
     }
   }
   async function handleNewsFeed(){
