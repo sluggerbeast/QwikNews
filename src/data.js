@@ -1,3 +1,5 @@
+import axios from "axios";
+export const dBug = true;
 export const newsList = [
   {
     imgUrl:
@@ -30,3 +32,26 @@ export const categoryList = [
   { id: 13, category: "international", keywords: ["international", "world"] },
 
 ];
+
+const IPurl = "https://api.ipify.org/?format=json"
+/// this will get user's ip to serve the local news.
+
+const geoLocation = "http://www.geoplugin.net/json.gp"
+/// returns data in json.
+
+async function getGeoLocation(val="regionName"){
+  //// next step here will be to add geolocation city to localstorage.
+  const response = await axios.get(geoLocation);
+  if(response.data.geoplugin_status=="200"){
+    const city = val.toLowerCase();
+    return response.data[`geoplugin_${city}`];
+  }
+  else{
+    return "India";
+  }
+
+}
+
+export function debug(input){
+  dBug && console.log(input);
+}

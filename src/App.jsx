@@ -13,9 +13,9 @@ import { faHippo } from "@fortawesome/free-solid-svg-icons";
 import SideBar from "./pages/SideBar";
 import Swipeable from "./components/Swipeable";
 // import {categoryList} from "./data.js"
-
+import { debug } from "./data";
 const env = "prod"
-const debug = true;
+
 const EvnUrl = env=="prod"?"https://qwiknewsbackend.onrender.com/":"http://127.0.0.1:8000/"
 const inshortUrl = env=="prod"?"https://qwiknewsbackend.onrender.com/inshorts?count=150":"http://127.0.0.1:8000/inshorts?count=150"
 export const categoryList = [
@@ -108,7 +108,7 @@ function App() {
           date: item.date
         };
       });
-      setNewsData(prev=>[...formatedList,...prev]);
+      setNewsData(prev=>[...prev,...formatedList,]);
     }
   }
   async function handleNewsFeed(){
@@ -117,7 +117,7 @@ function App() {
         return item.keywords;
       }).flat()
       console.log(prefArr)
-      console.log(NewsData.map((item)=>item.category))
+      debug(NewsData.map((item)=>item.category))
 
       let CatList = NewsData.filter((item)=>{
           
@@ -154,10 +154,10 @@ function App() {
      
 
   },[])
+
   useEffect(()=>{
       localStorage.setItem('newsPref',JSON.stringify({"pref":newsPreference}))
-
-
+ 
   },[newsPreference])
 
   useEffect(() => {
