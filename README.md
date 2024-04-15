@@ -2,9 +2,7 @@
 
 This is a news app inspired by Inshorts
 
-This app is work in progress
-
-[Demo](https://qwiknews.netlify.app/)
+This app is work in progress, please check it out [Demo:https://qwiknews.netlify.app/](https://qwiknews.netlify.app/)
 
 # Features
 
