@@ -14,6 +14,6 @@ This app is work in progress
 - [x] Responsive
 - [ ] Dark Mode
 - [ ] Pagination
-- [ ] Filtering
+- [x] Filtering
 - [ ] Sorting
 - [ ] Sharing
