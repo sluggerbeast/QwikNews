@@ -18,6 +18,7 @@ const env = "prod"
 
 const EvnUrl = env=="prod"?"https://qwiknewsbackend.onrender.com/":"http://127.0.0.1:8000/"
 const inshortUrl = env=="prod"?"https://qwiknewsbackend.onrender.com/inshorts?count=150":"http://127.0.0.1:8000/inshorts?count=150"
+const IEurl = env=="prod"?"https://qwiknewsbackend.onrender.com/news":"http://127.0.0.1:8000/news"
 export const categoryList = [
   { id: 1, category: "politics", keywords: ["politics", "bjp", "congress", "voting", "election",
 "cities","national","political-pulse","india"] },
@@ -111,6 +112,22 @@ function App() {
       setNewsData(prev=>[...prev,...formatedList,]);
     }
   }
+  async function DataHandleIE(list) {
+    if (list) {
+      const formatedList = list.map((item) => {
+        return {
+          id: item.id,
+          imgUrl: item.urlToImage,
+          articleUrl: item.url,
+          heading: item.title,
+          summary: item.description,
+          category:[item.category],
+          date: item.date
+        };
+      });
+      setNewsData(prev=>[...prev,...formatedList]);
+    }
+  }
   async function handleNewsFeed(){
     if(newsPreference.length>0){
       const prefArr = newsPreference.map((item)=>{
@@ -165,9 +182,14 @@ function App() {
     const fetchData = async () => {
       const responseHT = await axios.get(EvnUrl);
       await DataHandle(responseHT.data);
-      const responseIS = await axios.get(inshortUrl
+      // const responseIS = await axios.get(inshortUrl
+      // );
+      // await DataHandleInshorts(responseIS.data)
+      const responseIE = await axios.get(IEurl
       );
-      await DataHandleInshorts(responseIS.data)
+      console.log(responseIE.data.data)
+      await DataHandleIE(responseIE.data.data.news_list)
+      
       //console.log(response.data);
     };
 
