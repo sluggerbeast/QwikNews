@@ -13,8 +13,9 @@ import { faHippo } from "@fortawesome/free-solid-svg-icons";
 import SideBar from "./pages/SideBar";
 import Swipeable from "./components/Swipeable";
 // import {categoryList} from "./data.js"
+import { SendVisits } from "./data";
 import { debug } from "./data";
-const env = "prod"
+export const env = "prod"
 
 const EvnUrl = env=="prod"?"https://qwiknewsbackend.onrender.com/":"http://127.0.0.1:8000/"
 const inshortUrl = env=="prod"?"https://qwiknewsbackend.onrender.com/inshorts?count=150":"http://127.0.0.1:8000/inshorts?count=150"
@@ -169,7 +170,6 @@ function App() {
       // console.log(pref.pref)
     }
      
-
   },[])
 
   useEffect(()=>{
@@ -178,6 +178,9 @@ function App() {
   },[newsPreference])
 
   useEffect(() => {
+    /// This SendVisits function will send the visit data to the server.
+    /// find the code for it in data.js
+    SendVisits();
     setNewsData([])
     const fetchData = async () => {
       const responseHT = await axios.get(EvnUrl);
@@ -185,15 +188,19 @@ function App() {
       // const responseIS = await axios.get(inshortUrl
       // );
       // await DataHandleInshorts(responseIS.data)
+      
+      
+      //console.log(response.data);
+    };
+    const fetchIEData = async ()=>{
       const responseIE = await axios.get(IEurl
       );
       console.log(responseIE.data.data)
       await DataHandleIE(responseIE.data.data.news_list)
-      
-      //console.log(response.data);
-    };
+    }
 
     fetchData();
+    fetchIEData();
     setIsLoading(false);
 
     handleNewsFeed();
