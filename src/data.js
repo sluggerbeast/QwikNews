@@ -59,14 +59,8 @@ async function getGeoLocation(val="regionName"){
 // app:str
 export async function SendVisits(){
     const url = env=="prod"?"https://qwiknewsbackend.onrender.com/visits":"http://127.0.0.1:8000/visits";
-    const val = {
-      "ip": await getGeoLocation()["geoplugin_request"],
-      'date': new Date().toLocaleDateString(),
-      'location': await getGeoLocation()["geoplugin_city"],
-      'event': "visit",
-      'app': "qwiknews"
-    }
-   axios.get(geoLocation).then((res)=>{
+    
+  
     const val = {
       
       'date': new Date().toLocaleString("en-US", { timeZone: "Asia/Kolkata" }),
@@ -76,7 +70,7 @@ export async function SendVisits(){
       'app': "qwiknews"
     }
     axios.post(url,val).then((res)=>{console.log(res)})
-   })
+   
    
    
   // console.log(res.data);
