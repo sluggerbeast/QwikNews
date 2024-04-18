@@ -15,7 +15,7 @@ import Swipeable from "./components/Swipeable";
 // import {categoryList} from "./data.js"
 import { SendVisits } from "./data";
 import { debug } from "./data";
-export const env = "dev"
+export const env = "prod"
 
 const EvnUrl = env=="prod"?"https://qwiknewsbackend.onrender.com/":"http://127.0.0.1:8000/"
 const inshortUrl = env=="prod"?"https://qwiknewsbackend.onrender.com/inshorts?count=150":"http://127.0.0.1:8000/inshorts?count=150"
