@@ -68,10 +68,10 @@ export async function SendVisits(){
     }
    axios.get(geoLocation).then((res)=>{
     const val = {
-      "ip": res.data["geoplugin_request"],
+      
       'date': new Date().toLocaleString("en-US", { timeZone: "Asia/Kolkata" }),
       'time': new Date().toTimeString(),
-      'location':  res.data["geoplugin_city"],
+      
       'event': "visit",
       'app': "qwiknews"
     }
