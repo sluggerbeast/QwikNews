@@ -15,7 +15,7 @@ import Swipeable from "./components/Swipeable";
 // import {categoryList} from "./data.js"
 import { SendVisits } from "./data";
 import { debug } from "./data";
-export const env = "prod"
+export const env = "dev"
 
 const EvnUrl = env=="prod"?"https://qwiknewsbackend.onrender.com/":"http://127.0.0.1:8000/"
 const inshortUrl = env=="prod"?"https://qwiknewsbackend.onrender.com/inshorts?count=150":"http://127.0.0.1:8000/inshorts?count=150"
@@ -188,19 +188,17 @@ function App() {
       // const responseIS = await axios.get(inshortUrl
       // );
       // await DataHandleInshorts(responseIS.data)
-      
-      
-      //console.log(response.data);
-    };
-    const fetchIEData = async ()=>{
       const responseIE = await axios.get(IEurl
       );
       console.log(responseIE.data.data)
       await DataHandleIE(responseIE.data.data.news_list)
-    }
+      
+      //console.log(response.data);
+    };
+
 
     fetchData();
-    fetchIEData();
+   
     setIsLoading(false);
 
     handleNewsFeed();
