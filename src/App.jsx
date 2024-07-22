@@ -183,11 +183,13 @@ function App() {
     SendVisits();
     setNewsData([])
     const fetchData = async () => {
-      const responseHT = await axios.get(EvnUrl);
-      await DataHandle(responseHT.data);
+      // const responseHT = await axios.get(EvnUrl);
+      // await DataHandle(responseHT.data);
+      //_________not being used_________
       // const responseIS = await axios.get(inshortUrl
       // );
       // await DataHandleInshorts(responseIS.data)
+      //________________________________
       const responseIE = await axios.get(IEurl
       );
       console.log(responseIE.data.data)
