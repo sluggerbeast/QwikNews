@@ -26,13 +26,13 @@ function ShortCards({ imgUrl, aUrl, heading, summary, taskToggle,date }) {
     <>
       <div
         onClick={handleTaskBarToggle}
-        className="flex flex-col  justify-center h-[95vh] w-fit sm:w-[400px] bg-slate-100 rounded-[10px] mb-1 font-roboto"
+        className="flex flex-col  justify-center h-[95vh] w-fit sm:w-[400px] sm:max-w-[100%] max-w-[100%] bg-slate-100 rounded-[10px] mb-1 font-roboto"
       >
         <div className="max-h-[50vh] h-fit flex-auto overflow-hidden">
           {/* <img src={imgUrl} className="w-[100%]  max-h-[50vh] " alt="something went wrong" loading='lazy'/> */}
           <LazyLoadImage
             className=" w-[100%]  max-h-[50vh] "
-            src={imgUrl}
+            src={imgUrl?imgUrl:"https://placehold.co/600x400/000000/FFFFFF.png"}
             
             
             alt="Something went wrong please reload page."
