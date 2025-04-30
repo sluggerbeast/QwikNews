@@ -40,7 +40,7 @@ function ShortCards({ imgUrl, aUrl, heading, summary, taskToggle,date }) {
         </div>
         <div className="m-4 flex-[70%]">
           <h2 className=" mt-2 font-[500] text-xl">{heading}</h2>
-          <p className="font-[300] mt-2 text-slate-900 text-[1.1rem]">
+          <p className="font-[300] mt-2 text-slate-900 text-[1.4rem] w-screen overflow-hidden">
             {summary}
           </p>
           <p className="mt-2 w-full" onClick={handleOpenArticle}>
