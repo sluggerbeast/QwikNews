@@ -35,7 +35,7 @@ function Nav({
   }, []);
   return (
     <div
-      style={{ display: onTaskBarToggle ? "block" : "none" }}
+      style={{ display: onTaskBarToggle ? "block" : "block" }}
       className="text-center p-2 bg-slate-100 opacity-95  fixed w-full mb-2 shadow z-30"
     >
       <ul className="flex justify-between sm:justify-center sm:gap-[4rem]">
