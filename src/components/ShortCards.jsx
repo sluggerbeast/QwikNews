@@ -43,9 +43,11 @@ function ShortCards({ imgUrl, aUrl, heading, summary, taskToggle,date }) {
           <p className="font-[300] mt-2 text-slate-900 text-[1.1rem] overflow-auto">
             {summary}
           </p>
-          <p className="mt-2 w-full" onClick={handleOpenArticle}>
+          <p className="mt-2 w-full text-sm" onClick={handleOpenArticle}>
+          
             <a href={aUrl} target="_blank">
-              read more...
+            <div className="text-sm text-slate-500 font-light italic bottom-0 right-0">summarized by AI</div>
+            read more...
             </a>
             <span className="text-xs ml-[45%]">{date}</span>
           </p>
