@@ -1,7 +1,19 @@
 import React, { useState } from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
-
+function SummaryNote() {
+  return (
+    <div className="flex items-center text-sm text-gray-700 ">
+      <span className="italic">Summarized by AI</span>
+      <div className="relative group ml-1">
+        <span className="text-blue-500 cursor-pointer">ℹ️</span>
+        <div className="absolute left-1/2 -translate-x-1/2 bottom-full mb-1 w-56 rounded-lg bg-gray-800 text-white text-xs px-3 py-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-10">
+          Summarization can be inaccurate. Read complete article.
+        </div>
+      </div>
+    </div>
+  );
+}
 
 function ShortCards({ imgUrl, aUrl, heading, summary, taskToggle,date }) {
   const [openIFrame, setOpenIFrame] = useState(false);
@@ -47,6 +59,7 @@ function ShortCards({ imgUrl, aUrl, heading, summary, taskToggle,date }) {
           
             <a href={aUrl} target="_blank">
             <div className="text-sm text-slate-500 font-light italic bottom-0 right-0">summarized by AI</div>
+            <SummaryNote />
             read more...
             </a>
             <span className="text-xs ml-[45%]">{date}</span>

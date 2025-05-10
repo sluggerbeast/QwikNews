@@ -15,18 +15,18 @@ import Swipeable from "./components/Swipeable";
 // import {categoryList} from "./data.js"
 import { SendVisits } from "./data";
 import { debug } from "./data";
-export const env = "prod"
+export const env = "dev"
 
-const EvnUrl = env=="prod"?"https://qwiknewsbackend.onrender.com/":"http://127.0.0.1:8000/"
+const EvnUrl = env=="prod"?"https://qwiknewsbackend.onrender.com/":"http://127.0.0.1:8082/"
 const inshortUrl = env=="prod"?"https://qwiknewsbackend.onrender.com/inshorts?count=150":"http://127.0.0.1:8000/inshorts?count=150"
-const IEurl = env=="prod"?"https://qwiknewsbackend.onrender.com/news":"http://127.0.0.1:8000/news"
+const IEurl = env=="prod"?"https://qwiknewsbackend.onrender.com/news":"http://127.0.0.1:8082/news"
 export const categoryList = [
   { id: 1, category: "politics", keywords: ["politics", "bjp", "congress", "voting", "election",
 "cities","national","political-pulse","india"] },
 
   { id: 2, category: "sports", keywords: ["sports", "ipl", "footbal",] },
-  { id: 3, category: "health", keywords: ["health", "lifestyle",] },
-  { id: 4, category: "technology", keywords: ["technology",] },
+  { id: 3, category: "health", keywords: ["health", "lifestyle","fitness","food",] },
+  { id: 4, category: "technology", keywords: ["technology","tech",] },
   { id: 5, category: "entertainment", keywords: ["entertainment", "celebrity", "actor", "movies"] },
   { id: 6, category: "business", keywords: ["business", "investment", "funding"] },
 
