@@ -109,10 +109,19 @@ function FilterBtn({ id, filterText, onNewsPref,newPref ,serverCat}) {
       <button
         onClick={handleFilterClick}
         disabled={isDisabled}
-        style={{
+        
+        style={!isDisabled ? {
           backgroundColor: isSelected ? null : "#eeeeee",
           color: isSelected ? null : "black",
+        } : {
+          backgroundColor: "#e0e0e0",  // slightly lighter gray
+          color: "#888888",            // muted text
+          borderColor: "#aaaaaa",      // lighter border
+          opacity: 0.6,                // faded look
+          cursor: "not-allowed",       // tells user it's unclickable
+          pointerEvents: "none"        // disables mouse events
         }}
+        
         className="bg-[#0055cc] hover:bg-[#0055cc] border border-[#0055cc] text-white rounded-lg p-2 m-2"
       >
         {filterText}{isSelected?<FontAwesomeIcon className="ml-1" icon={faCircleCheck} />:null}
