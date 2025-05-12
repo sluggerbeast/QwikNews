@@ -17,16 +17,16 @@ import { SendVisits } from "./data";
 import { debug } from "./data";
 export const env = "prod"
 
-const EvnUrl = env=="prod"?"https://qwiknewsbackend.onrender.com/":"http://127.0.0.1:8000/"
+const EvnUrl = env=="prod"?"https://qwiknewsbackend.onrender.com/":"http://127.0.0.1:8082/"
 const inshortUrl = env=="prod"?"https://qwiknewsbackend.onrender.com/inshorts?count=150":"http://127.0.0.1:8000/inshorts?count=150"
-const IEurl = env=="prod"?"https://qwiknewsbackend.onrender.com/news":"http://127.0.0.1:8000/news"
+const IEurl = env=="prod"?"https://qwiknewsbackend.onrender.com/news":"http://127.0.0.1:8082/news"
 export const categoryList = [
-  { id: 1, category: "politics", keywords: ["politics", "bjp", "congress", "voting", "election",
+  { id: 1, category: "india", keywords: ["politics", "bjp", "congress", "voting", "election",
 "cities","national","political-pulse","india"] },
 
   { id: 2, category: "sports", keywords: ["sports", "ipl", "footbal",] },
-  { id: 3, category: "health", keywords: ["health", "lifestyle",] },
-  { id: 4, category: "technology", keywords: ["technology",] },
+  { id: 3, category: "health", keywords: ["health", "lifestyle","fitness","food",] },
+  { id: 4, category: "technology", keywords: ["technology","tech",] },
   { id: 5, category: "entertainment", keywords: ["entertainment", "celebrity", "actor", "movies"] },
   { id: 6, category: "business", keywords: ["business", "investment", "funding"] },
 
@@ -37,7 +37,7 @@ export const categoryList = [
   { id: 10, category: "travel", keywords: ["travel"] },
   { id: 11, category: "science", keywords: ["science"] },
   { id: 12, category: "fashion", keywords: ["fashion", "outfit"] },
-  { id: 13, category: "international", keywords: ["international", "world"] },
+  { id: 13, category: "world", keywords: ["international", "world"] },
 
 ];
 
@@ -49,6 +49,8 @@ function App() {
   const [newsPreference, setNewsPreference]  = useState([])
   const [newsFeed,setNewsFeed] = useState([])
   const [currentFeedName, setCurrentFeedName] = useState("Your feed");
+  const [readArticleList, setReadArticleList] = useState([])
+  const [serverCatList,setServerCatList] = useState([])
   function handleShowTaskBar() {
     setShowTaskBar((prev) => {
       return !prev;
@@ -90,7 +92,8 @@ function App() {
           heading: item.title,
           summary: item.description,
           category:[item.category],
-          date: item.date
+          date: item.date,
+          read:"unread"
         };
       });
       setNewsData(formatedList);
@@ -107,13 +110,15 @@ function App() {
           heading: item.title,
           summary: item.content,
           category:item.categoryList,
-          date: item.date
+          date: item.date,
+          read:"unread"
         };
       });
       setNewsData(prev=>[...prev,...formatedList,]);
     }
   }
-  async function DataHandleIE(list) {
+  async function DataHandleIE(data) {
+    let list = data.news_list
     if (list) {
       const formatedList = list.map((item) => {
         return {
@@ -123,12 +128,18 @@ function App() {
           heading: item.title,
           summary: item.description,
           category:[item.category],
-          date: item.date
+          date: item.date,
+          read:"unread"
         };
       });
       setNewsData(prev=>[...prev,...formatedList]);
+      if(data.category_list){
+        setServerCatList([...data.category_list])
+      }
+      console.log(serverCatList)
     }
   }
+  
   async function handleNewsFeed(){
     if(newsPreference.length>0){
       const prefArr = newsPreference.map((item)=>{
@@ -162,6 +173,7 @@ function App() {
     handleNewsFeed();
 
   },[NewsData,newsPreference])
+  
 
   useEffect(()=>{
     const pref = JSON.parse(localStorage.getItem("newsPref"))
@@ -180,7 +192,7 @@ function App() {
   useEffect(() => {
     /// This SendVisits function will send the visit data to the server.
     /// find the code for it in data.js
-    SendVisits();
+    // SendVisits();
     setNewsData([])
     const fetchData = async () => {
       // const responseHT = await axios.get(EvnUrl);
@@ -193,7 +205,9 @@ function App() {
       const responseIE = await axios.get(IEurl
       );
       console.log(responseIE.data.data)
-      await DataHandleIE(responseIE.data.data.news_list)
+      await DataHandleIE(responseIE.data.data)
+      
+      
       
       //console.log(response.data);
     };
@@ -209,7 +223,7 @@ function App() {
 
   return (
     <>
-    <SideBar onSideBarToggle={isSideBarOpen} onNewsPref={handleNewPref} newPref={newsPreference} />
+    <SideBar onSideBarToggle={isSideBarOpen} onNewsPref={handleNewPref} newPref={newsPreference} serverCat={serverCatList}/>
       <Nav onTaskBarToggle={showTaskBar} isSideBarOpen={isSideBarOpen} onSideBarToggle={handleSideBarToggle}  currentFeedName={currentFeedName}/>
        <Swipeable onSideBarToggle={handleSideBarToggle} /> 
       {/* <div>
