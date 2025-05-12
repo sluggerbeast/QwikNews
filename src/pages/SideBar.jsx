@@ -5,18 +5,19 @@ import {
   faHippo,
   faRefresh,
   faArrowUp,
-  faFilter,
+  faFilter, faCircleCheck
 } from "@fortawesome/free-solid-svg-icons";
   import {categoryList} from "../App.jsx"
 import PwaInstall from "../components/PwaInstall.jsx";
 
   const NewsChannels = [
-    {id:1,channel:"All News"},
+    {id:1,channel:"Economic Times"},
     {id:2,channel:"Indian express"},
-    {id:3,channel:"Inshorts"},
+    {id:3,channel:"The Hindu"},
+    {id:4,channel:"First Post"}
   ]
   
-function SideBar({ onSideBarToggle ,onNewsPref,newPref }) {
+function SideBar({ onSideBarToggle ,onNewsPref,newPref,serverCat}) {
   const [fitlerCat, setFilterCat] = useState([]);
 
   // function handleFilterClick(id, action) {
@@ -44,7 +45,7 @@ function SideBar({ onSideBarToggle ,onNewsPref,newPref }) {
         <input
           type="text"
           placeholder=" &#128269; Search for news"
-          className="w-full text-center focus:text-left p-1 pl-4"
+          className="w-full text-center focus:text-left p-1 pl-4 hidden"
         />
 
         <p className="m-1 text-center">
@@ -59,12 +60,13 @@ function SideBar({ onSideBarToggle ,onNewsPref,newPref }) {
               onNewsPref={onNewsPref}
               filterText={item.category}
               newPref={newPref}
+              serverCat={serverCat}
             />
           ))}
         </div>
         <p className=" text-center italic text-xs">&#8592; Swipe left to close this menu</p>
         <PwaInstall />
-        <p className="text-center m-1">News channels &#128269; (coming soon)</p>
+        <p className="text-center m-1">News Sources &#128269;</p>
         
         <div className="flex flex-row flex-wrap justify-center  p-3">
           {NewsChannels.map((item) => (
@@ -81,8 +83,16 @@ function SideBar({ onSideBarToggle ,onNewsPref,newPref }) {
   );
 }
 
-function FilterBtn({ id, filterText, onNewsPref,newPref }) {
+function FilterBtn({ id, filterText, onNewsPref,newPref ,serverCat}) {
+
   const [isSelected, setIsSelectd] = useState(false);
+  const matchedCategory = categoryList.find(cat =>
+    cat.keywords.includes(filterText)
+  );
+  
+  const isDisabled = !(
+    matchedCategory && serverCat.includes(matchedCategory.category)
+  );
   useEffect(()=>{
       const val = newPref.filter((item)=>item.id==id)
       if(val.length>0){
@@ -98,13 +108,14 @@ function FilterBtn({ id, filterText, onNewsPref,newPref }) {
       {" "}
       <button
         onClick={handleFilterClick}
+        disabled={isDisabled}
         style={{
           backgroundColor: isSelected ? null : "#eeeeee",
           color: isSelected ? null : "black",
         }}
         className="bg-[#0055cc] hover:bg-[#0055cc] border border-[#0055cc] text-white rounded-lg p-2 m-2"
       >
-        {filterText}
+        {filterText}{isSelected?<FontAwesomeIcon className="ml-1" icon={faCircleCheck} />:null}
       </button>{" "}
     </div>
   );
