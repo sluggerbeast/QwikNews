@@ -5,4 +5,4 @@ git add .
 git commit -m "dev commits"
 
 # Push the committed changes to the remote repository 'origin', setting upstream branch
-git push -u origin main
+git push -u origin master

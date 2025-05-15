@@ -192,7 +192,7 @@ function App() {
   useEffect(() => {
     /// This SendVisits function will send the visit data to the server.
     /// find the code for it in data.js
-    // SendVisits();
+    SendVisits();
     setNewsData([])
     const fetchData = async () => {
       // const responseHT = await axios.get(EvnUrl);

@@ -58,7 +58,7 @@ async function getGeoLocation(val="regionName"){
 // event:str | None = None
 // app:str
 export async function SendVisits(){
-    const url = env=="prod"?"https://qwiknewsbackend.onrender.com/visits":"http://127.0.0.1:8000/visits";
+    const url = env=="prod"?"https://xyz.saurabhpareek.xyz/traffic/track":"http://127.0.0.1:8000/visits";
     
   
     const val = {
@@ -69,9 +69,9 @@ export async function SendVisits(){
       'event': "visit",
       'app': "qwiknews"
     }
-    axios.post(url,val).then((res)=>{console.log(res)})
+    // axios.post(url,val).then((res)=>{console.log(res)})
    
-   
+   axios.get(url).then((res)=>{console.log(res)})
    
   // console.log(res.data);
 }
