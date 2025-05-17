@@ -58,9 +58,13 @@ async function getGeoLocation(val="regionName"){
 // event:str | None = None
 // app:str
 export async function SendVisits(){
-    const url = env=="prod"?"https://xyz.saurabhpareek.xyz/traffic/track":"http://127.0.0.1:8000/visits";
     
-  
+    let userId = localStorage.getItem('userId');
+    if (!userId) {
+    userId = crypto.randomUUID();
+    localStorage.setItem('userId', userId);
+    }
+  const url = env=="prod"?"https://xyz.saurabhpareek.xyz/traffic/track?userid="+userId:"http://127.0.0.1:8000/visits";
     const val = {
       
       'date': new Date().toLocaleString("en-US", { timeZone: "Asia/Kolkata" }),
